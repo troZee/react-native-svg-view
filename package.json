@@ -24,7 +24,7 @@
     "typescript": "tsc --noEmit",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
     "prepare": "bob build",
-    "release": "dotenv release-it --",
+    "release": "dotenv release-it",
     "example": "yarn --cwd example",
     "pods": "cd example && pod-install --quiet",
     "bootstrap": "yarn example && yarn && yarn pods"
@@ -147,9 +147,7 @@
     "example": "example",
     "lib": "lib"
   },
-  "dependencies": {
-
-  },
+  "dependencies": {},
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   }

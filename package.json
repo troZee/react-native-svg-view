@@ -34,7 +34,10 @@
     "ios",
     "android"
   ],
-  "repository": "https://github.com/troZee/react-native-svg-view/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/troZee/react-native-svg-view.git"
+  },
   "author": "troZee <you@example.com> (https://github.com/troZee/react-native-svg-view/)",
   "license": "MIT",
   "bugs": {
@@ -59,7 +62,7 @@
     "prettier": "^2.0.5",
     "react": "16.11.0",
     "react-native": "0.62.2",
-    "release-it": "^13.5.8",
+    "release-it": "^13.7.1",
     "typescript": "^3.8.3"
   },
   "peerDependencies": {
@@ -138,5 +141,10 @@
       "module",
       "typescript"
     ]
-  }
+  },
+  "directories": {
+    "example": "example",
+    "lib": "lib"
+  },
+  "dependencies": {}
 }

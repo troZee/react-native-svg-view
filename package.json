@@ -146,5 +146,8 @@
     "example": "example",
     "lib": "lib"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
 }

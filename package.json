@@ -149,5 +149,5 @@
   "dependencies": {},
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
-  },
+  }
 }

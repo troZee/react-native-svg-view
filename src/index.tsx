@@ -1,9 +1,11 @@
-import { NativeModules } from 'react-native';
+import { requireNativeComponent } from 'react-native';
+import type { StyleProp, ViewStyle } from 'react-native';
 
 type SvgViewType = {
-  multiply(a: number, b: number): Promise<number>;
+  style?: StyleProp<ViewStyle>;
+  source: string;
 };
 
-const { SvgView } = NativeModules;
+const SvgView = requireNativeComponent<SvgViewType>('SvgView');
 
-export default SvgView as SvgViewType;
+export default SvgView;

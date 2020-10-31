@@ -3,15 +3,12 @@ import { StyleSheet, View, Text } from 'react-native';
 import SvgView from 'react-native-svg-view';
 
 export default function App() {
-  const [result, setResult] = React.useState<number | undefined>();
-
-  React.useEffect(() => {
-    SvgView.multiply(3, 7).then(setResult);
-  }, []);
-
   return (
     <View style={styles.container}>
-      <Text>Result: {result}</Text>
+      <SvgView
+        source="https://www.dropbox.com/s/kpa1bewuut3lm5q/wheel.svg?raw=1"
+        style={{ width: 100, height: 100 }}
+      />
     </View>
   );
 }

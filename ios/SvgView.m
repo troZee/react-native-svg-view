@@ -1,9 +1,4 @@
-#import <React/RCTBridgeModule.h>
-
-@interface RCT_EXTERN_MODULE(SvgView, NSObject)
-
-RCT_EXTERN_METHOD(multiply:(float)a withB:(float)b
-                 withResolver:(RCTPromiseResolveBlock)resolve
-                 withRejecter:(RCTPromiseRejectBlock)reject)
-
+#import "React/RCTViewManager.h"
+@interface RCT_EXTERN_MODULE(SvgViewManager, RCTViewManager)
+RCT_EXPORT_VIEW_PROPERTY(source, NSString)
 @end

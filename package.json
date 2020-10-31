@@ -24,7 +24,7 @@
     "typescript": "tsc --noEmit",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
     "prepare": "bob build",
-    "release": "release-it",
+    "release": "dotenv release-it --",
     "example": "yarn --cwd example",
     "pods": "cd example && pod-install --quiet",
     "bootstrap": "yarn example && yarn && yarn pods"
@@ -62,8 +62,9 @@
     "prettier": "^2.0.5",
     "react": "16.11.0",
     "react-native": "0.62.2",
-    "release-it": "^13.7.1",
-    "typescript": "^3.8.3"
+    "release-it": "^13.6.5",
+    "typescript": "^3.8.3",
+    "dotenv-cli": "^4.0.0"
   },
   "peerDependencies": {
     "react": "*",
@@ -146,7 +147,9 @@
     "example": "example",
     "lib": "lib"
   },
-  "dependencies": {},
+  "dependencies": {
+
+  },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   }

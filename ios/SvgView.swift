@@ -1,20 +1,39 @@
 import Foundation
 import SwiftSVG
+import WebKit
+import Macaw
 
 class SvgView: UIView {
-
+    
+    let webView = WKWebView()
+    var node: Node?
+    
     var source: NSString? {
         set(val) {
             guard let val = val else {
                 return;
             }
             let svgURL = URL(string: val as String)!
-            let hammock = UIView(SVGURL: svgURL) { [weak self] svgLayer in
-                guard let self = self else { return }
-                self.svgLayer = svgLayer
-                self.layoutSubviews()
+            //            if let svgString = try? String(contentsOf: svgURL) {
+            //
+            //                webView.loadHTMLString(svgString, baseURL: svgURL)
+            //                webView.frame = self.frame
+            //                webView.backgroundColor = .red
+            //                DispatchQueue.main.async { [self] in
+            //                    self.addSubview(self.webView)
+            //                    self.layoutSubviews()
+            //                    self.layoutIfNeeded()
+            //                }
+            //
+            //            }
+            if let svgString = try? String(contentsOf: svgURL) {
+                node = try! SVGParser.parse(text: svgString)
+                DispatchQueue.main.async { [self] in
+                    self.layoutIfNeeded()
+                }
+                
             }
-            addSubview(hammock)
+
         }
         get {
             return nil
@@ -25,15 +44,16 @@ class SvgView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        print(frame)
-        guard let layer = svgLayer else {
+
+        guard let node = node else {
             return;
         }
-        layer.resizeToFit(bounds)
+        let macaw = MacawView(node: node, frame: self.frame)
+        self.addSubview(macaw)
     }
     
     @objc func setSource(_ val: NSString) {
-      source = val
+        source = val
     }
     
     init() {

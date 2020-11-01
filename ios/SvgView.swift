@@ -44,11 +44,12 @@ class SvgView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-
+        print(self.frame)
         guard let node = node else {
             return;
         }
-        let macaw = MacawView(node: node, frame: self.frame)
+        print(self.bounds)
+        let macaw = MacawView(node: node, frame: self.bounds)
         self.addSubview(macaw)
     }
     

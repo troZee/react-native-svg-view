@@ -7,7 +7,7 @@ export default function App() {
     <View style={styles.container}>
       <SvgView
         source="https://www.dropbox.com/s/d1dbdvo4l7xry4w/downdogflip.svg?raw=1"
-        style={{ width: 100, height: 100 }}
+        style={{ width: 50, height: 50 }}
       />
     </View>
   );

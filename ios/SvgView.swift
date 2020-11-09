@@ -1,5 +1,4 @@
 import Foundation
-import Macaw
 
 class SvgView: UIView {
     

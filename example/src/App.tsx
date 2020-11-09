@@ -7,7 +7,7 @@ export default function App() {
     <View style={styles.container}>
       <SvgView
         source="https://www.dropbox.com/s/d1dbdvo4l7xry4w/downdogflip.svg?raw=1"
-        style={{ width: 50, height: 50 }}
+        style={styles.svg}
       />
     </View>
   );
@@ -18,5 +18,9 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  svg: {
+    width: 50,
+    height: 50,
   },
 });

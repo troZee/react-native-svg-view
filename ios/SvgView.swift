@@ -1,12 +1,9 @@
 import Foundation
-import SwiftSVG
-import WebKit
 import Macaw
 
 class SvgView: UIView {
     
-    let webView = WKWebView()
-    var node: Node?
+    private var node: Node?
     
     var source: NSString? {
         set(val) {
@@ -14,18 +11,6 @@ class SvgView: UIView {
                 return;
             }
             let svgURL = URL(string: val as String)!
-            //            if let svgString = try? String(contentsOf: svgURL) {
-            //
-            //                webView.loadHTMLString(svgString, baseURL: svgURL)
-            //                webView.frame = self.frame
-            //                webView.backgroundColor = .red
-            //                DispatchQueue.main.async { [self] in
-            //                    self.addSubview(self.webView)
-            //                    self.layoutSubviews()
-            //                    self.layoutIfNeeded()
-            //                }
-            //
-            //            }
             if let svgString = try? String(contentsOf: svgURL) {
                 node = try! SVGParser.parse(text: svgString)
                 DispatchQueue.main.async { [self] in
@@ -39,9 +24,7 @@ class SvgView: UIView {
             return nil
         }
     }
-    
-    private var svgLayer: SVGLayer? = nil
-    
+        
     override func layoutSubviews() {
         super.layoutSubviews()
         print(self.frame)
@@ -62,7 +45,7 @@ class SvgView: UIView {
     }
     
     deinit {
-        svgLayer = nil
+        node = nil
     }
     
     required init?(coder: NSCoder) {

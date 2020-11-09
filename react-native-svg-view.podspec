@@ -15,9 +15,8 @@ Pod::Spec.new do |s|
 
   
   s.source_files = "ios/**/*.{h,m,mm,swift}"
-  
 
-  s.dependency "React"
-  s.dependency "Macaw"
+  s.dependency 'React-Core'
+  s.dependency "Macaw", "0.9.6"
   
 end

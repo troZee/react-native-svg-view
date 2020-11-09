@@ -11,6 +11,7 @@ class SvgView: UIView {
                 return;
             }
             let svgURL = URL(string: val as String)!
+            // TODO use NSURL here instead of contentsOf
             if let svgString = try? String(contentsOf: svgURL) {
                 node = try! SVGParser.parse(text: svgString)
                 DispatchQueue.main.async { [self] in
@@ -27,11 +28,9 @@ class SvgView: UIView {
         
     override func layoutSubviews() {
         super.layoutSubviews()
-        print(self.frame)
         guard let node = node else {
             return;
         }
-        print(self.bounds)
         let macaw = MacawView(node: node, frame: self.bounds)
         self.addSubview(macaw)
     }

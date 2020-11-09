@@ -86,18 +86,6 @@
       "@commitlint/config-conventional"
     ]
   },
-  "release-it": {
-    "git": {
-      "commitMessage": "chore: release ${version}",
-      "tagName": "v${version}"
-    },
-    "npm": {
-      "publish": false
-    },
-    "github": {
-      "release": true
-    }
-  },
   "eslintConfig": {
     "extends": [
       "@react-native-community",

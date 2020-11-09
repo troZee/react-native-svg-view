@@ -1,39 +1,42 @@
 import Foundation
-import SwiftSVG
+import Macaw
 
 class SvgView: UIView {
-
+    
+    private var node: Node?
+    
     var source: NSString? {
         set(val) {
             guard let val = val else {
                 return;
             }
             let svgURL = URL(string: val as String)!
-            let hammock = UIView(SVGURL: svgURL) { [weak self] svgLayer in
-                guard let self = self else { return }
-                self.svgLayer = svgLayer
-                self.layoutSubviews()
+            // TODO use NSURL here instead of contentsOf
+            if let svgString = try? String(contentsOf: svgURL) {
+                node = try! SVGParser.parse(text: svgString)
+                DispatchQueue.main.async { [self] in
+                    self.layoutIfNeeded()
+                }
+                
             }
-            addSubview(hammock)
+
         }
         get {
             return nil
         }
     }
-    
-    private var svgLayer: SVGLayer? = nil
-    
+        
     override func layoutSubviews() {
         super.layoutSubviews()
-        print(frame)
-        guard let layer = svgLayer else {
+        guard let node = node else {
             return;
         }
-        layer.resizeToFit(bounds)
+        let macaw = MacawView(node: node, frame: self.bounds)
+        self.addSubview(macaw)
     }
     
     @objc func setSource(_ val: NSString) {
-      source = val
+        source = val
     }
     
     init() {
@@ -41,7 +44,7 @@ class SvgView: UIView {
     }
     
     deinit {
-        svgLayer = nil
+        node = nil
     }
     
     required init?(coder: NSCoder) {

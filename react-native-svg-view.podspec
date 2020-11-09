@@ -18,5 +18,6 @@ Pod::Spec.new do |s|
   
 
   s.dependency "React"
-  s.dependency "SwiftSVG", "2.3.2"
+  s.dependency "Macaw"
+  
 end

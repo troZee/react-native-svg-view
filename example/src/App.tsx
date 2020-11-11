@@ -1,26 +1,48 @@
 import * as React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
 import SvgView from 'react-native-svg-view';
+import dataSource from './datasource.json';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <SvgView
-        source="https://www.dropbox.com/s/d1dbdvo4l7xry4w/downdogflip.svg?raw=1"
-        style={styles.svg}
-      />
-    </View>
+    <SafeAreaView style={styles.container}>
+      <ScrollView
+        contentContainerStyle={styles.scrollContent}
+        style={styles.container}
+      >
+        <Text style={styles.text}>React Native SVG View Example</Text>
+        <View style={styles.content}>
+          {dataSource.map((item) => (
+            <SvgView key={item.id} source={item.img_url} style={styles.svg} />
+          ))}
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  scrollContent: {
+    padding: 20,
+  },
+  text: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginTop: 16,
+    marginBottom: 24,
+  },
+  content: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
     alignItems: 'center',
-    justifyContent: 'center',
   },
   svg: {
-    width: 50,
-    height: 50,
+    width: 40,
+    height: 40,
+    margin: 4,
   },
 });

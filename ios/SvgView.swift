@@ -2,40 +2,34 @@ import Foundation
 
 class SvgView: UIView {
     
-    private var node: Node?
-    
-    var source: NSString? {
-        set(val) {
-            guard let val = val else {
-                return;
-            }
-            let svgURL = URL(string: val as String)!
-            // TODO use NSURL here instead of contentsOf
-            if let svgString = try? String(contentsOf: svgURL) {
-                node = try! SVGParser.parse(text: svgString)
-                DispatchQueue.main.async { [self] in
-                    self.layoutIfNeeded()
-                }
-                
-            }
-
-        }
-        get {
-            return nil
-        }
-    }
-        
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        guard let node = node else {
+    @objc func setSource(_ val: NSString?) {
+        guard let val = val else {
             return;
         }
-        let macaw = MacawView(node: node, frame: self.bounds)
-        self.addSubview(macaw)
-    }
-    
-    @objc func setSource(_ val: NSString) {
-        source = val
+        
+        guard let serviceUrl = URL(string: val as String) else { return }
+        let request = URLRequest(url: serviceUrl)
+        let session = URLSession.shared
+        session.dataTask(with: request) { (data, response, error) in
+            guard let _ = response else {
+                return
+            }
+            guard let data = data else {
+                return
+            }
+            
+            do {
+                let str = String(decoding: data, as: UTF8.self)
+                let node = try SVGParser.parse(text: str)
+                DispatchQueue.main.async { [self] in
+                    let macaw = MacawView(node: node, frame: self.bounds)
+                    self.addSubview(macaw)
+                    self.layoutSubviews()
+                }
+            } catch {
+                print(error)
+            }
+        }.resume()
     }
     
     init() {
@@ -43,7 +37,9 @@ class SvgView: UIView {
     }
     
     deinit {
-        node = nil
+        subviews.forEach { (view) in
+            view.removeFromSuperview()
+        }
     }
     
     required init?(coder: NSCoder) {

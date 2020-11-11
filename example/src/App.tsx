@@ -10,7 +10,7 @@ export default function App() {
         contentContainerStyle={styles.scrollContent}
         style={styles.container}
       >
-        <Text style={styles.text}>React Native SVG View</Text>
+        <Text style={styles.text}>React Native SVG View Example</Text>
         <View style={styles.content}>
           {dataSource.map((item) => (
             <SvgView key={item.id} source={item.img_url} style={styles.svg} />

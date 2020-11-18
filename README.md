@@ -25,7 +25,7 @@ import SvgView from 'react-native-svg-view';
 
 <SvgView
   source="https://www.dropbox.com/s/d1dbdvo4l7xry4w/downdogflip.svg?raw=1"
-  style={{ width: 24, width: 24 }}
+  style={{ height: 24, width: 24 }}
 />;
 ```
 
@@ -41,7 +41,7 @@ import SvgView from 'react-native-svg-view';
 
 See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.
 
-## Alternaties
+## Alternatives
 
 [react-native-svg](https://github.com/react-native-svg/react-native-svg)
 

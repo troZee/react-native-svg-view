@@ -1,6 +1,6 @@
 {
   "name": "react-native-svg-view",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "desc",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",

@@ -47,7 +47,7 @@ See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the 
 
 [react-native-svg-uri](https://github.com/vault-development/react-native-svg-uri)
 
-[react-native-svg-uri](https://github.com/aeirola/react-native-svg-asset-plugin)
+[react-native-svg-asset-plugin](https://github.com/aeirola/react-native-svg-asset-plugin)
 
 ## License
 

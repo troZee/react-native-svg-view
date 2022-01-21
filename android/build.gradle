@@ -130,5 +130,5 @@ dependencies {
   implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
   implementation 'com.github.bumptech.glide:glide:4.11.0'
   kapt 'com.github.bumptech.glide:compiler:4.11.0'
-  implementation 'com.caverock:androidsvg:1.2.1'
+  implementation 'com.caverock:androidsvg:1.4'
 }

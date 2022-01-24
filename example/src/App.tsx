@@ -9,8 +9,7 @@ import {
 } from 'react-native';
 import SvgView from 'react-native-svg-view';
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-// import dataSource from './datasource.json';
+import dataSource from './datasource.json';
 //@ts-ignore
 import XMLParser from 'react-xml-parser';
 
@@ -67,9 +66,19 @@ export default function App() {
           {/* {path && Platform.OS === 'android' ? (
             <SvgView source={url} style={styles.svg} />
           ) : null} */}
-          {path && Platform.OS === 'android' ? (
+          {/* {path && Platform.OS === 'android' ? (
             <SvgView stringSource={path} style={styles.svg} />
-          ) : null}
+          ) : null} */}
+          {[
+            'https://www.autozone.com/cdn/icons/az_icons/wiper-icon-rear.svg',
+            'https://www.autozone.com/cdn/icons/az_icons/wiper-icon-passenger.svg',
+            'https://www.autozone.com/cdn/icons/az_icons/wiper-icon-driver.svg',
+            'https://www.autozone.com/cdn/icons/az_icons/product-finder-spark-plug-bg-full.svg',
+            'https://www.autozone.com/cdn/images/B2C/US/content/product-finder/bg-product-finder-battery.svg',
+            'https://www.autozone.com/cdn/images/B2C/US/content/product-finder/bg-product-finder-brake-fluid.svg',
+          ].map((item) => (
+            <SvgView key={item} source={item} style={styles.svg} />
+          ))}
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -96,8 +105,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   svg: {
-    width: width,
-    height: height,
+    width: 40,
+    height: 40,
     margin: 4,
   },
 });
